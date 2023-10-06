@@ -23,7 +23,7 @@ Module scripts are actually their own separate object compared to script objects
 
 ModuleScripts are commonly placed in **ServerScriptService** when used by server-side scripts and **ReplicatedStorage** when used by client-side local scripts (such as GUI interactions).
 
-1. Create a **ModuleScript** in **ServerStorage**.
+1. Create a **ModuleScript** in **ServerScriptService**.
 
 <img src="../../../assets/education/coding-6/intro-to-module-scripts/create-module-script.png" width="50%" />
 
@@ -54,10 +54,10 @@ To add a function or variable to the module which can be used in another script,
 ```lua
 local TestModule = {}
 
--- Adds a variable to 'myModule' table
+-- Adds a variable to 'TestModule' table
 TestModule.myVariable = 100
 
--- Adds a function to 'myModule' table
+-- Adds a function to 'TestModule' table
 function TestModule.doTask(player)
  -- Placeholder code
 end
@@ -66,7 +66,7 @@ return TestModule
 ```
 
 <Alert severity="warning">
-Anything added to the module table should be typed between `local myModule = {}` and `return myModule`, or else the code may create an error.
+Anything added to the module table should be typed between `local TestModule = {}` and `return TestModule`, or else the code may create an error.
 </Alert>
 
 ### Scope in Module Scripts
@@ -106,13 +106,13 @@ By itself, a module script can't run code — it needs to be loaded in another s
 To use a module, in a separate script, set a variable equal to `require(moduleScript)`.
 
 ```lua
-local myModule = require(ServerStorage.ModuleScript)
+local myModule = require(ServerScriptService.ModuleScript)
 ```
 
 Now, the variable `myModule` contains the module table created in that module script. To use functions and variables from that table, type the variable name, followed by a dot, and the exact name of what to use in that module script, like `myModule.myFunction()`. When the script runs and reaches that line, it'll access that specific function or variable stored in the module table.
 
 ```lua
-local myModule = require(ServerStorage.ModuleScript)
+local myModule = require(ServerScriptService.ModuleScript)
 
 myModule.myFunction()
 ```
@@ -142,10 +142,10 @@ return rewardManager
 ```
 
 ```lua title='Script - TreasureChestScript'
-local ServerStorage = game:GetService("ServerStorage")
+local ServerScriptService = game:GetService("ServerScriptService")
 
 -- Load module script
-local RewardManager = require(ServerStorage.RewardManager)
+local RewardManager = require(ServerScriptService.RewardManager)
 
 --Calls function from module script
 local coins = RewardManager.getCoinReward("easy")
@@ -170,6 +170,6 @@ Some of the tips here address common issues when working with module scripts. Ke
 
 ## Summary
 
-**Module scripts** in Roblox are a method coders use to organize and reuse code. A module script is often stored in ServerStorage (or ReplicatedStorage for client-based interactions). From there, other scripts are able to call functions and variables stored in that module script.
+**Module scripts** in Roblox are a method coders use to organize and reuse code. A module script is often stored in ServerScriptService (or ReplicatedStorage for client-based interactions). From there, other scripts are able to call functions and variables stored in that module script.
 
 For instance, one game may award points to players for collecting objects. A module script can handle code to give points. Then, scripts for different types of objects can just call the module script function. This reduces the need to reuse code between scripts, making code easier to understand and maintain.
