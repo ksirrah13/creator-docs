@@ -102,7 +102,6 @@ local function pickClothes()
 end
 
 -- Second algorithm for putting clothes on
-
 local function putOnClothes()
     put on top clothing
     put on bottom clothing
@@ -118,7 +117,7 @@ end
 ```
 
 <Alert severity="success">
-  For an optional challenge, try and figure out what are additional algorithms `pickCloths()` might use?
+  For an optional challenge, try and figure out what are additional algorithms `pickClothes()` might use?
 
 - Check the weather.
 - Check if clothes are clean
