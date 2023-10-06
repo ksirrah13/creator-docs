@@ -137,7 +137,7 @@ Once it finds the value, the function will use the `return` keyword to return th
 
    ```lua
    local function findValue(whichArray, itemName)
-   for currentIndex = 1, #whichArray do
+      for currentIndex = 1, #whichArray do
          if whichArray[currentIndex] == itemName then
             --Sends the value of currentIndex back
             return currentIndex
