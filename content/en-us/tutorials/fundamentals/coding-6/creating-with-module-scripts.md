@@ -197,6 +197,7 @@ Right now, a leaderboard keeps track of a player's keys and treasure. To change 
       local leaderstats = player:FindFirstChild("leaderstats")
       return leaderstats:WaitForChild("Keys")
    end
+
    local function getPlayerTreasure(whichCharacter)
       local player = Players:GetPlayerFromCharacter(whichCharacter)
       local leaderstats = player:FindFirstChild("leaderstats")
@@ -227,12 +228,6 @@ Right now, a leaderboard keeps track of a player's keys and treasure. To change 
 If needed, check your script against the one below for any troubleshooting issues.
 
 ```lua title = "Current TreasureManager Script"
-local TreasureManager = {}
-
-local Players = game:GetService("Players")
-local keyDrop = 1
-
------------------- Local Functions
 local TreasureManager = {}
 local Players = game:GetService("Players")
 local keyDrop = 1
@@ -444,9 +439,9 @@ end
 function TreasureManager.canOpenChest(whichCharacter)
    local playerKeys = getPlayerKeys(whichCharacter)
    if playerKeys.Value >= 1 then
-   return true
+      return true
    else
-   return false
+      return false
    end
 end
 
@@ -486,7 +481,7 @@ end
 for chestIndex = 1, #chestsArray do
    local chestPart = chestsArray[chestIndex]
    chestPart.Touched:Connect(function(otherPart)
-   partTouched(otherPart, chestPart)
+      partTouched(otherPart, chestPart)
    end)
 end
 ```
